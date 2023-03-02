@@ -1,6 +1,6 @@
 # Library-Management_Python
 
-Project: Create a simple library management system
+A simple library management system
 
 - The system should have 2 roles: admin (librarian) and rest are users
 - Each have a login
