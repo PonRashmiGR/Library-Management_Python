@@ -1,0 +1,24 @@
+CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    publication_date DATE NOT NULL,
+    available BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    role VARCHAR(10) NOT NULL CHECK (role IN ('admin', 'user'))
+);
+
+CREATE TABLE loans (
+    id SERIAL PRIMARY KEY,
+    book_id INTEGER REFERENCES books(id) ON DELETE CASCADE,
+    borrower_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    loan_date DATE NOT NULL,
+    return_date DATE
+);
+
+ALTER TABLE books ADD COLUMN genre VARCHAR(255);
